@@ -7,6 +7,7 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { map, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -28,9 +29,10 @@ export class AuthService {
       } else {
         localStorage.setItem('user', 'null');
         JSON.parse(localStorage.getItem('user')!);
-      }
+      }      
     });
   }
+
   // Sign in with email/password
   SignIn(email: string, password: string) {
     return this.afAuth
@@ -78,12 +80,14 @@ export class AuthService {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}`
     );
+    console.log(userRef)
     const userData: User = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
       emailVerified: user.emailVerified,
+      role: user.role,
     };
     return userRef;
     /*return userRef.set(userData, {

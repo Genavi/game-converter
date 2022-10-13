@@ -39,8 +39,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -103,8 +103,23 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "game-converter:build:production",
+            "firebaseProject": "game-converter-aa84a",
+            "firebaseHostingSite": "game-converter-aa84a"
+          }
         }
+      },
+      "deploy": {
+        "builder": "@angular/fire:deploy",
+        "options": {}
       }
     }
-  }
+  },
+  "defaultProject": "game-converter"
 }

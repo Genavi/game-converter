@@ -1,0 +1,21 @@
+{
+  "projects": {
+    "default": "game-converter-aa84a"
+  },
+  "targets": {
+    "game-converter": {
+      "hosting": {
+        "game-converter-aa84a": [
+          "game-converter-aa84a"
+        ]
+      }
+    },
+    "game-converter-aa84a": {
+      "hosting": {
+        "game-converter": [
+          "game-converter-aa84a"
+        ]
+      }
+    }
+  }
+}

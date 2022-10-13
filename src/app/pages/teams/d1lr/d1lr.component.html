@@ -27,7 +27,7 @@
                 <td>{{item.location}}</td>   
               </tr>
             </table>
-            <button mat-raised-button color="primary" (click)="download()">Download ICS</button>
+            <button *ngIf="xmlItems" mat-raised-button color="primary" (click)="download()">Download ICS</button>
         </div>
       </main>
     </div>

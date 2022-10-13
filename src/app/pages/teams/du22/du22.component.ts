@@ -22,7 +22,7 @@ export class Du22Component implements OnInit {
   }
 
   async loadXML() {  
-    await this._http.get('https://www.basketplan.ch/showTeamSchedule.do?lang=de&xmlView=rss&seasonId=27&teamId=860',
+    await this._http.get(`https://www.basketplan.ch/showTeamSchedule.do?lang=de&xmlView=rss&seasonId=${this.icsService.seasonid}&teamId=860`,
       {  
         headers: new HttpHeaders(),
         responseType: 'text'  
@@ -74,7 +74,8 @@ export class Du22Component implements OnInit {
         let defHome = (item.homeTeamName.includes("BC Alte Kanti Aarau")) ? ("BC AKA") : (item.homeTeamName);
         let defGuest = (item.guestTeamName.includes("BC Alte Kanti Aarau")) ? ("BC AKA") : (item.guestTeamName);
         let devCat = (category.label == "-") ? ("") : (" ("+category.label+")");
-        let add = (address.city == "Aarau 4 Telli") ? ("Aarau") : (address.city);
+        let city = (address.city == "Aarau 4 Telli") ? ("Aarau") : (address.city);
+        let addr = (address.line1) ? (address.line1.replace('ß', 'ss') + ", " + address.zip + " " + city) : (address.zip + " " + city);
 
         const event: Event = {
           uid: item.gameId,
@@ -83,7 +84,7 @@ export class Du22Component implements OnInit {
           guest: defGuest,
           start: startdate,
           end: enddate,
-          location: address.line1 + ", " + address.zip + " " + add,
+          location: addr,
           category: "Spiel" + devCat,
           description: "",
         };

@@ -22,7 +22,7 @@ export class Hu16iComponent implements OnInit {
   }
 
   async loadXML() {  
-    await this._http.get('https://www.basketplan.ch/showTeamSchedule.do?lang=de&xmlView=rss&seasonId=27&teamId=6429',
+    await this._http.get(`https://www.basketplan.ch/showTeamSchedule.do?lang=de&xmlView=rss&seasonId=${this.icsService.seasonid}&teamId=6429`,
       {  
         headers: new HttpHeaders(),
         responseType: 'text'  
@@ -50,6 +50,7 @@ export class Hu16iComponent implements OnInit {
       for (var k in obj) {
         var item = obj[k].$;
         var address = obj[k].location[0].address[0].$;
+        console.log(address)
         var category = obj[k].location[0].category[0].$
 
         const [year, month, day] = item.date.split('-');
@@ -75,7 +76,8 @@ export class Hu16iComponent implements OnInit {
         let defGuest = (item.guestTeamName.includes("BC Alte Kanti")) ? ("BC AKA") : (item.guestTeamName);
         let devCat = (category.label == "-") ? ("") : (" ("+category.label+")");
         let add = (address.city == "Aarau 4 Telli") ? ("Aarau") : (address.city);
-
+        let addr = (address.line1) ? (address.line1.replace('ß', 'ss') + ", " + address.zip + " " + add) : (address.zip + " " + add);
+        
         const event: Event = {
           uid: item.gameId,
           federation: fed, 
@@ -83,7 +85,7 @@ export class Hu16iComponent implements OnInit {
           guest: defGuest,
           start: startdate,
           end: enddate,
-          location: address.line1 + ", " + address.zip + " " + add,
+          location:  addr,
           category: "Spiel" + devCat,
           description: "",
         };

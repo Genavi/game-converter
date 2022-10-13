@@ -5,6 +5,7 @@ import { Event } from '../services/event';
   providedIn: 'root'
 })
 export class IcsService {
+  public seasonid = "27";
   private VCALENDAR = `BEGIN:VCALENDAR
 PRODID:-//https://bc-aka.ch//NONSGML iCalcreator 2.6//
 VERSION:2.0
@@ -20,7 +21,7 @@ Content-Type: text/calendar; charset=utf-8
        * Don't ever format this string template!!!
        */
       const EVENT = `BEGIN:VEVENT
-UiD:${event.uid}
+UID:${event.uid}
 LOCATION:${event.location}
 SUMMARY:${event.federation}: ${event.home} - ${event.guest}
 CATEGORY:${event.category}
