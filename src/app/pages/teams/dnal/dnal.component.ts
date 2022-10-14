@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../../../shared/services/auth.service';
 import { IcsService } from '../../../shared/services/ics.service';
 import { Event } from '../../../shared/services/event';
@@ -13,7 +13,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class DnalComponent implements OnInit {
   public xmlItems: any;
-
+  
   constructor(public authService: AuthService, public icsService: IcsService, private _http: HttpClient, private datePipe: DatePipe) {
   }
 

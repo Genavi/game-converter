@@ -14,11 +14,13 @@ import { Hu16iComponent } from './pages/teams/hu16i/hu16i.component';
 import { Du14Component } from './pages/teams/du14/du14.component';
 import { Hu14Component } from './pages/teams/hu14/hu14.component';
 import { Hu12Component } from './pages/teams/hu12/hu12.component';
+import { VerifyEmailComponent } from './pages/verify-email/verify-email.component';
 import { AuthGuard } from './shared/guard/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/sign-in', pathMatch: 'full' },
   { path: 'sign-in', component: SignInComponent },
+  { path: 'verify', component: VerifyEmailComponent },
   { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
   { path: 'teams/dnal', component: DnalComponent, canActivate: [AuthGuard] },
   { path: 'teams/h1nl', component: H1nlComponent, canActivate: [AuthGuard] },

@@ -12,6 +12,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatTableModule} from '@angular/material/table';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,6 +36,8 @@ import { Hu12Component } from './pages/teams/hu12/hu12.component';
 import { TopnavComponent } from './components/topnav/topnav.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { GametableComponent } from './components/gametable/gametable.component';
+import { SeasonselectComponent } from './components/seasonselect/seasonselect.component';
+import { VerifyEmailComponent } from './pages/verify-email/verify-email.component';
 
 
 @NgModule({
@@ -53,7 +59,9 @@ import { GametableComponent } from './components/gametable/gametable.component';
     Hu12Component,
     TopnavComponent,
     SidenavComponent,
-    GametableComponent
+    GametableComponent,
+    SeasonselectComponent,
+    VerifyEmailComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +74,11 @@ import { GametableComponent } from './components/gametable/gametable.component';
     HttpClientModule,
     MatSelectModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatExpansionModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatTableModule
   ],
   providers: [AuthService, DatePipe],
   bootstrap: [AppComponent]

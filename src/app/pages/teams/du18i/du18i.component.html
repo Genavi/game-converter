@@ -4,31 +4,10 @@
     <div class="row">
       <app-sidenav class="col-md-2 d-md-block bg-light sidebar"></app-sidenav>
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-        <div class="container">    
-            <table class="table table-bordered table-hover">    
-              <tr>    
-                <th>Id</th>    
-                <th>Federation</th>
-                <th>Category</th>
-                <th>Home</th>    
-                <th>Guest</th>
-                <th>Start</th>
-                <th>End</th>
-                <th>Location</th>
-              </tr>    
-              <tr *ngFor="let item of xmlItems">    
-                <td>{{item.uid}}</td>    
-                <td>{{item.federation}}</td>
-                <td>{{item.category}}</td>
-                <td>{{item.home}}</td>   
-                <td>{{item.guest}}</td>   
-                <td>{{item.start | date: 'yyyyMMddTHHmmss'}}</td>   
-                <td>{{item.end | date: 'yyyyMMddTHHmmss'}}</td>   
-                <td>{{item.location}}</td>   
-              </tr>
-            </table>
-            <button mat-raised-button color="primary" (click)="download()">Download ICS</button>
+        <div class="example-action-buttons">
+          <button *ngIf="xmlItems" mat-raised-button color="primary" (click)="download()">Download ICS</button>
         </div>
+        <app-gametable [xmlItems]="xmlItems"></app-gametable>
       </main>
     </div>
 </div>
