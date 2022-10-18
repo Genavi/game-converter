@@ -5,9 +5,9 @@ import { Event } from '../services/event';
   providedIn: 'root'
 })
 export class IcsService {
-  public seasonid = "27";
+  public seasonid = 27;
   private VCALENDAR = `BEGIN:VCALENDAR
-PRODID:-//https://bc-aka.ch//NONSGML iCalcreator 2.6//
+PRODID:-//https://bc-aka.ch/ iCalcreator 2.6//
 VERSION:2.0
 X-WR-TIMEZONE:Europe/Zurich
 Content-Type: text/calendar; charset=utf-8 
@@ -16,6 +16,7 @@ Content-Type: text/calendar; charset=utf-8
   constructor() { }
 
   createEvent(events: Event[]) {
+    console.log(events)
     for (const event of events) {
       /**
        * Don't ever format this string template!!!
@@ -33,7 +34,9 @@ END:VEVENT`
 `
     }
     this.VCALENDAR += `END:VCALENDAR`;
-    return this.VCALENDAR;
+    let icscal = this.VCALENDAR;
+    this.VCALENDAR = "";
+    return icscal;
   }
 
   formatDate(date: Date): string {

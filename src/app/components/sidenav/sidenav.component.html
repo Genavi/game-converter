@@ -1,60 +1,31 @@
 <nav>
     <div class="sidebar-sticky">
       <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/convert" routerLinkActive="active" ariaCurrentWhenActive="page"><fa-icon [icon]="faCoffee"></fa-icon> Convert</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/user" routerLinkActive="active" ariaCurrentWhenActive="page"><i class="fas fa-user"></i>User</a>
+        </li>
         <li>
           <mat-form-field appearance="legacy">
             <mat-label>Season</mat-label>
-            <mat-select formControl="seasonControl" [(value)]="this.icsService.seasonid" required>
-              <mat-option *ngFor="let season of seasons" [value]="season.id">
+            <mat-select formControl="seasonControl" (selectionChange)="this.gamedataService.loadXML()" [(value)]="this.gamedataService.activeSeason" required>
+              <mat-option *ngFor="let season of this.gamedataService.seasons" [value]="season.id">
                 {{season.name}}
               </mat-option>
             </mat-select>
           </mat-form-field>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/teams/dnal" routerLinkActive="active" ariaCurrentWhenActive="page">DNAL</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/teams/h1nl" routerLinkActive="active" ariaCurrentWhenActive="page">H1NL</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/teams/d1lr" routerLinkActive="active" ariaCurrentWhenActive="page">D1LR</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/teams/h3ls" routerLinkActive="active" ariaCurrentWhenActive="page">H3LS</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/teams/du22" routerLinkActive="active" ariaCurrentWhenActive="page">DU22</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/teams/du18i" routerLinkActive="active" ariaCurrentWhenActive="page">DU18I</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/teams/hu18i" routerLinkActive="active" ariaCurrentWhenActive="page">HU18I</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/teams/du16i" routerLinkActive="active" ariaCurrentWhenActive="page">DU16I</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/teams/hu16i" routerLinkActive="active" ariaCurrentWhenActive="page">HU16I</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/teams/du14" routerLinkActive="active" ariaCurrentWhenActive="page">DU14</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/teams/hu14" routerLinkActive="active" ariaCurrentWhenActive="page">HU14</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/teams/hu12" routerLinkActive="active" ariaCurrentWhenActive="page">HU12</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/user" routerLinkActive="active" ariaCurrentWhenActive="page"><i class="fas fa-user"></i>User</a>
-        </li>
-        <!-- Calling SignOut() Api from AuthService -->
-        <li class="nav-item">
-          <a class="nav-link" (click)="authService.SignOut()">
-            <i class="fas fa-sign-out-alt"></i>Log out
-          </a>
+        <li>
+          <mat-form-field appearance="legacy">
+            <mat-label>Team</mat-label>
+            <mat-select formControl="seasonControl" (selectionChange)="this.gamedataService.loadXML()" [(value)]="this.gamedataService.activeTeam" required>
+              <mat-option *ngFor="let team of this.gamedataService.teams" [value]="team.id">
+                {{team.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
         </li>
       </ul>
     </div>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../shared/services/auth.service';
 import { IcsService } from '../../shared/services/ics.service';
 import { FormControl, Validators } from '@angular/forms';
+import { GamedataService } from '../../shared/services/gamedata.service';
+import { faArrowsRotate } from '@fortawesome/free-solid-svg-icons';
 
 interface Season {
   name: string;
@@ -13,6 +15,7 @@ interface Season {
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
+  faCoffee = faArrowsRotate;
   seasonControl = new FormControl<Season | null>(null, Validators.required);
   selectFormControl = new FormControl('', Validators.required);
   seasons: Season[] = [
@@ -26,7 +29,7 @@ export class SidenavComponent implements OnInit {
     {name: '29(30', id: '34'},
   ];
 
-  constructor(public authService: AuthService, public icsService: IcsService) { }
+  constructor(public authService: AuthService, public gamedataService: GamedataService, public icsService: IcsService) { }
 
   ngOnInit(): void {
   }

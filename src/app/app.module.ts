@@ -15,29 +15,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserComponent } from './pages/user/user.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
-import { H1nlComponent } from './pages/teams/h1nl/h1nl.component';
-import { DnalComponent } from './pages/teams/dnal/dnal.component';
-import { D1lrComponent } from './pages/teams/d1lr/d1lr.component';
-import { H3lsComponent } from './pages/teams/h3ls/h3ls.component';
-import { Du22Component } from './pages/teams/du22/du22.component';
-import { Du18iComponent } from './pages/teams/du18i/du18i.component';
-import { Hu18iComponent } from './pages/teams/hu18i/hu18i.component';
-import { Du16iComponent } from './pages/teams/du16i/du16i.component';
-import { Hu16iComponent } from './pages/teams/hu16i/hu16i.component';
-import { Du14Component } from './pages/teams/du14/du14.component';
-import { Hu14Component } from './pages/teams/hu14/hu14.component';
-import { Hu12Component } from './pages/teams/hu12/hu12.component';
 import { TopnavComponent } from './components/topnav/topnav.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { GametableComponent } from './components/gametable/gametable.component';
 import { SeasonselectComponent } from './components/seasonselect/seasonselect.component';
 import { VerifyEmailComponent } from './pages/verify-email/verify-email.component';
+import { ConvertComponent } from './pages/convert/convert.component';
 
 
 @NgModule({
@@ -45,23 +35,12 @@ import { VerifyEmailComponent } from './pages/verify-email/verify-email.componen
     AppComponent,
     UserComponent,
     SignInComponent,
-    H1nlComponent,
-    DnalComponent,
-    D1lrComponent,
-    H3lsComponent,
-    Du22Component,
-    Du18iComponent,
-    Hu18iComponent,
-    Du16iComponent,
-    Hu16iComponent,
-    Du14Component,
-    Hu14Component,
-    Hu12Component,
     TopnavComponent,
     SidenavComponent,
     GametableComponent,
     SeasonselectComponent,
-    VerifyEmailComponent
+    VerifyEmailComponent,
+    ConvertComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +57,8 @@ import { VerifyEmailComponent } from './pages/verify-email/verify-email.componen
     MatExpansionModule,
     MatInputModule,
     MatFormFieldModule,
-    MatTableModule
+    MatTableModule,
+    FontAwesomeModule
   ],
   providers: [AuthService, DatePipe],
   bootstrap: [AppComponent]

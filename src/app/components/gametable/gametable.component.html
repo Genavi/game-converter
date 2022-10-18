@@ -1,4 +1,5 @@
-<table mat-table [dataSource]="xmlItems" class="mat-elevation-z8">
+<div class="gametable">
+  <table mat-table [dataSource]="xmlItems" class="mat-elevation-z8">
     <th>Id</th>    
           <th>Federation</th>
           <th>Category</th>
@@ -58,3 +59,4 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
 </table>
+</div>

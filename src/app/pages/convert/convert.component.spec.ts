@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Hu18iComponent } from './hu18i.component';
+import { ConvertComponent } from './convert.component';
 
-describe('Hu18iComponent', () => {
-  let component: Hu18iComponent;
-  let fixture: ComponentFixture<Hu18iComponent>;
+describe('ConvertComponent', () => {
+  let component: ConvertComponent;
+  let fixture: ComponentFixture<ConvertComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ Hu18iComponent ]
+      declarations: [ ConvertComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Hu18iComponent);
+    fixture = TestBed.createComponent(ConvertComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
