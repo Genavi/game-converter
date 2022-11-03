@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GamedataService } from 'src/app/shared/services/gamedata.service';
 import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { AuthService } from '../../shared/services/auth.service';
 })
 export class UserComponent implements OnInit {
 
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService, public gamedataService: GamedataService) {}
 
   ngOnInit(): void {
   }

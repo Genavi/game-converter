@@ -5,6 +5,8 @@ import { Event } from '../../shared/services/event';
 import { DatePipe } from '@angular/common';
 import * as xml2js from 'xml2js';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { min, Observable } from 'rxjs';
 
 interface Season {
   name: string;
@@ -26,28 +28,27 @@ export class GamedataService {
     {name: `${this.lastYear}/${this.currentYear}`, id: this.lastId},
     {name: `${this.currentYear}/${this.nextYear}`, id: this.currentId}
   ];
-  public teams: Season[] = [
-    {name: 'dnal', id: 4113},
-    {name: 'h1ln', id: 1043},
-    {name: 'h3ls', id: 860},
-    {name: 'du22', id: 6501},
-    {name: 'du18i', id: 1049},
-    {name: 'hu18i', id: 1045},
-    {name: 'du16i', id: 5474},
-    {name: 'hu16i', id: 6429},
-    {name: 'du14', id: 5230},
-    {name: 'hu14', id: 1051},
-    {name: 'hu12', id: 6428},
-  ];
+  public teams: Season[] = [];
 
   public activeSeason: number = this.seasons[1].id;
   public xmlItems: any;
 
-  constructor(public authService: AuthService, private icsService: IcsService, private _http: HttpClient, private datePipe: DatePipe) {
+  constructor(private afs: AngularFirestore, public authService: AuthService, private icsService: IcsService, private _http: HttpClient, private datePipe: DatePipe) {
+    let fireTeams: Observable<Season[]> = this.afs.collection<Season>('teams', ref => ref.orderBy('name')).valueChanges();
+    fireTeams.forEach(t => {
+      t.forEach(val => {
+        this.teams.push(val)
+      })
+    });
+  }
+  
+  public SetTeams() {
+    console.log()
   }
 
-  private getTeam(): any {
-    return this.teams.find(i => i.id == this.activeTeam)?.name;
+  private getTeam(): string {
+    let id = this.teams.findIndex((i: Season)=> i.id == this.activeTeam);
+    return this.teams[id].name;
   }
 
   public async loadXML() { 
@@ -88,48 +89,27 @@ export class GamedataService {
 
         const [year, month, day] = item.date.split('-');
         const [hour, minute] = item.time.split(':');
-
-        let startdate = new Date(year, month, day, hour, minute);
+        let startdate = new Date(year, month-1, day, hour, minute);
         let enddate = new Date(startdate.getTime() + 2 * 60 * 60 * 1000)
+
         
         let fed = "";
-        let team = this.getTeam();
-        if(item.nameLeagueHolding.includes("Saison")){
-          fed = team.toUpperCase();
-        } else {
-          switch(item.nameLeagueHolding) {
-            case "Friendly Game": {
-              if (team == "h1ln") {
-                fed = "HFNL";
-              } else if  (team == "dnal") {
-                fed = "DFNL";
-              }
-              break;
-            }
-            case "SB League Women - Preliminary phase": {
-              fed = "DNAL";
-              break;
-            }
-            case "Patrick Baumann Swiss Cup Women": {
-              fed = "DCoupe Suisse";
-              break;
-            }
-            case "NL1 Men - Preliminary phase group East": {
-              fed = "H1LN";
-              break;
-            }
-            case "Patrick Baumann Swiss Cup Men": {
-              fed = "HCoupe Suisse";
-              break;
-            }
-            default: {
-              fed = item.nameLeagueHolding;
-              break;
-            }
+
+        switch(item.nameLeagueHolding) {
+          case "Patrick Baumann Swiss Cup Women": {
+            fed = "DCoupe Suisse";
+            break;
+          }
+          case "Patrick Baumann Swiss Cup Men": {
+            fed = "HCoupe Suisse";
+            break;
+          }
+          default: {
+            fed = this.getTeam();
+            break;
           }
         }
         
-
         let defHome = (item.homeTeamName.includes("BC Alte Kanti")) ? ("BC AKA") : (item.homeTeamName);
         let defGuest = (item.guestTeamName.includes("BC Alte Kanti")) ? ("BC AKA") : (item.guestTeamName);
         let devCat = (category.label == "-") ? ("") : (" ("+category.label+")");

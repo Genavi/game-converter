@@ -4,10 +4,12 @@ import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {
   AngularFirestore,
+  AngularFirestoreCollection,
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
+import { GamedataService } from './gamedata.service';
 @Injectable({
   providedIn: 'root',
 })
@@ -17,7 +19,7 @@ export class AuthService {
     public afs: AngularFirestore, // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
-    public ngZone: NgZone // NgZone service to remove outside scope warning
+    public ngZone: NgZone, // NgZone service to remove outside scope warning
   ) {
     /* Saving user data in localstorage when 
     logged in and setting up null when logged out */
@@ -94,6 +96,7 @@ export class AuthService {
       merge: true,
     });*/
   }
+
   // Sign out
   SignOut() {
     return this.afAuth.signOut().then(() => {
