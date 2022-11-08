@@ -34,8 +34,11 @@ export class GamedataService {
   public xmlItems: any;
 
   constructor(private afs: AngularFirestore, public authService: AuthService, private icsService: IcsService, private _http: HttpClient, private datePipe: DatePipe) {
-    let fireTeams: Observable<Season[]> = this.afs.collection<Season>('teams', ref => ref.orderBy('name')).valueChanges();
-    fireTeams.forEach(t => {
+    this.getTeams()
+  }
+
+  private async getTeams() {
+    await this.afs.collection<Season>('teams', ref => ref.orderBy('name')).valueChanges().forEach(t => {
       t.forEach(val => {
         this.teams.push(val)
       })

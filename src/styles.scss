@@ -65,7 +65,7 @@ h6 {
   display: table;
   width: 100%;
   height: 100%;
-  background: #12056d;
+  background: #232b2b;
 }
 
 .displayTableCell {
@@ -141,7 +141,7 @@ input:-moz-placeholder {
   font-size: 16px;
   font-weight: 600;
   padding: 15px 0;
-  background: #f96ea8;
+  background: #456DCB;
   color: #ffffff;
   cursor: pointer;
   outline: none;
@@ -285,7 +285,7 @@ input:-moz-placeholder {
 .sidebar a:hover,
 a:not([href]):not([tabindex]):focus,
 a:not([href]):not([tabindex]):hover {
-  color: #e91e63;
+  color: #456DCB;
   background: #efefef;
 }
 
@@ -306,6 +306,10 @@ a:not([href]):not([tabindex]):hover {
 }
 
 /* * Navbar */
+.navbar {
+  z-index: 200;
+}
+
 .navbar-brand {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -364,7 +368,7 @@ i {
 }
 
 .action-block .fa-trash-alt:hover {
-  color: #e91e63;
+  color: #456DCB;
 }
 
 .btn-primary.focus,

@@ -25,3 +25,29 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+# Firebase
+
+Firebase was setup with version 11.16.0
+
+## Setup
+
+Run `npm install firebase @angular/fire`. It installs the firebse and @angular/fire packages.
+
+Use `firebase init hosting` to setup the firebase connection
+
+Edit firebase.json
+```
+{
+  "hosting": {
+    "site": "converter-genavi",
+    "public": "dist/coaching",
+    ...
+  }
+}
+
+```
+
+## Deploy
+
+Run `firebase deploy --only hosting:converter-genavi` to deploy current build

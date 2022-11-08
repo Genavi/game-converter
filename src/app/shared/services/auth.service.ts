@@ -44,7 +44,7 @@ export class AuthService {
         this.SetUserData(result.user);
         this.afAuth.authState.subscribe((user) => {
           if (user) {
-            this.router.navigate(['convert']);
+            this.router.navigate(['user']);
           }
         });
       })

@@ -28,6 +28,8 @@ import { GametableComponent } from './components/gametable/gametable.component';
 import { SeasonselectComponent } from './components/seasonselect/seasonselect.component';
 import { VerifyEmailComponent } from './pages/verify-email/verify-email.component';
 import { ConvertComponent } from './pages/convert/convert.component';
+import { SplashService } from './shared/services/splash.service';
+import { SplashComponent } from './components/splash/splash.component';
 
 
 @NgModule({
@@ -40,7 +42,8 @@ import { ConvertComponent } from './pages/convert/convert.component';
     GametableComponent,
     SeasonselectComponent,
     VerifyEmailComponent,
-    ConvertComponent
+    ConvertComponent,
+    SplashComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +63,7 @@ import { ConvertComponent } from './pages/convert/convert.component';
     MatTableModule,
     FontAwesomeModule
   ],
-  providers: [AuthService, DatePipe],
+  providers: [AuthService, DatePipe, SplashService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
