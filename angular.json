@@ -110,8 +110,8 @@
             "prerender": false,
             "ssr": false,
             "browserTarget": "game-converter:build:production",
-            "firebaseProject": "game-converter-aa84a",
-            "firebaseHostingSite": "game-converter-aa84a"
+            "firebaseProject": "genavi-playground",
+            "firebaseHostingSite": "converter-genavi"
           }
         }
       },
@@ -121,5 +121,5 @@
       }
     }
   },
-  "defaultProject": "game-converter"
+  "defaultProject": "genavi-playground"
 }

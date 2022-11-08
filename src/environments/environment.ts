@@ -5,13 +5,13 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyBEpAzXNlH1Teb2hp75c0j6X0ABEeYNga4",
-    authDomain: "game-converter-aa84a.firebaseapp.com",
-    projectId: "game-converter-aa84a",
-    storageBucket: "game-converter-aa84a.appspot.com",
-    messagingSenderId: "415772723072",
-    appId: "1:415772723072:web:893cc945f58f7b99636365",
-    measurementId: "G-J0Y77CTHKC"
+    apiKey: "AIzaSyCIWsMZPph8PvKLw7k1xyi-hbOdEtSXidY",
+    authDomain: "genavi-playground.firebaseapp.com",
+    projectId: "genavi-playground",
+    storageBucket: "genavi-playground.appspot.com",
+    messagingSenderId: "300639764047",
+    appId: "1:300639764047:web:215c0c49beacade5e2f43a",
+    measurementId: "G-CP6FKT1GEL"
   }
 };
 
